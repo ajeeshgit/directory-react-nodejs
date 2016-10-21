@@ -16,7 +16,7 @@ CMD ["nginx"]
 EXPOSE 443
 COPY . /empdirectory
 RUN cd /empdirectory && npm install
-WORKDIR /empdirectory
-CMD [ "npm", "start" ]
+#WORKDIR /empdirectory
+#CMD [ "npm", "start" ]
 #CMD ["nodejs /empdirectory/server.js &"}
 
