@@ -18,5 +18,5 @@ COPY . /empdirectory
 RUN cd /empdirectory && npm install
 WORKDIR /empdirectory
 CMD [ "npm", "start" ]
-CMD ["nodejs /empdirectory/server.js &"}
+#CMD ["nodejs /empdirectory/server.js &"}
 
