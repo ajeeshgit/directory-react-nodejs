@@ -15,6 +15,6 @@ WORKDIR /etc/nginx
 CMD ["nginx"]
 EXPOSE 443
 COPY . /empdirectory
-RUN npm install
+RUN cd /empdirectory && npm install
 CMD ["/empdirectory/nodejs server.js"}
 
