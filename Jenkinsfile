@@ -16,7 +16,8 @@ node ('dockerbuilder'){
          
            // Add version
         sh "mkdir -p apps/api/priv/static/"
-        sh 'versioncreator.sh'
+        sh "chmod 755 ./versioncreator.sh"
+        sh "./versioncreator.sh"
      
 
     stage "Testing"
