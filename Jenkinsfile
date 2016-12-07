@@ -6,7 +6,7 @@ node ('dockerbuilder'){
  //
         sh "mv  /home/ubuntu/jenkins_workspace/workspace/Test_job_Pipeline_AS/Dockerfile-node-app /home/ubuntu/jenkins_workspace/workspace/Test_job_Pipeline_AS/Dockerfile"    
      
-        sh  "docker run --name emp-nodejs-app -d  ajeeshdocker/emp-nodejs-app"
+       // sh  "docker run --name emp-nodejs-app -d  ajeeshdocker/emp-nodejs-app"
         //bash -c ""cd /empdirectory && nodejs /empdirectory/server.js"""
 //docker exec -d -u 0 emp-nodejs-app bash -c ""cd /empdirectory && nodejs /empdirectory/server.js"
         //sh "mv Dockerfile Dockerfile-node-app"
