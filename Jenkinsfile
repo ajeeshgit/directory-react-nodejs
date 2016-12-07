@@ -7,7 +7,7 @@ node ('dockerbuilder'){
         
         
          //sh  "docker run --name emp-nodejs-app -d  ajeeshdocker/emp-nodejs-app"
-    Stage "Checkout SCM"
+    //Stage "Checkout SCM"
         dockerbuilder.withRegistry('hub.docker.com', 'ajeeshdocker') {
     
         git url: "https://github.com/ajeeshgit/nginx-conf/", Branch: 'DevBranch', credentialsId: 'ajeeshgit'
