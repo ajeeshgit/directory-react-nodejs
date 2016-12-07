@@ -1,12 +1,29 @@
 node ('dockerbuilder'){
     
-    stage "Git checkout" 
-        checkout scm
+   
     stage "Create build "
  //
         sh "mv  /home/ubuntu/jenkins_workspace/workspace/Test_job_Pipeline_AS/Dockerfile-node-app /home/ubuntu/jenkins_workspace/workspace/Test_job_Pipeline_AS/Dockerfile"    
-     
-       // sh  "docker run --name emp-nodejs-app -d  ajeeshdocker/emp-nodejs-app"
+        
+        
+         //sh  "docker run --name emp-nodejs-app -d  ajeeshdocker/emp-nodejs-app"
+    Stage "Checkout SCM"
+        docker.withRegistry('hub.docker.com', 'ajeeshdocker') {
+    
+        git url: "https://github.com/ajeeshgit/nginx-conf/", Branch: 'DevBranch', credentialsId: 'ajeeshgit'
+       
+        sh "git rev-parse HEAD > .git/commit-id"
+        def commit_id = readFile('.git/commit-id').trim()
+        println commit_id
+    
+        stage "build"
+        def app = docker.build "Test_job_as_pipeline_downstream_project"
+    
+        stage "publish"
+        app.push 'master'
+        app.push "${commit_id}"
+    }
+    
         //bash -c ""cd /empdirectory && nodejs /empdirectory/server.js"""
 //docker exec -d -u 0 emp-nodejs-app bash -c ""cd /empdirectory && nodejs /empdirectory/server.js"
         //sh "mv Dockerfile Dockerfile-node-app"
