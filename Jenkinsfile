@@ -8,7 +8,7 @@ node ('dockerbuilder'){
         
          //sh  "docker run --name emp-nodejs-app -d  ajeeshdocker/emp-nodejs-app"
     //Stage "Checkout SCM"
-        docker.withRegistry('https://hub.docker.com/r', 'ajeeshdocker') {
+        docker.withRegistry('https://hub.docker.com/', 'ajeeshdocker') {
     
         git url: "https://github.com/ajeeshgit/nginx-conf/", Branch: 'DevBranch', credentialsId: 'ajeeshgit'
        
@@ -17,7 +17,7 @@ node ('dockerbuilder'){
         println commit_id
     
         stage "build"
-        def app = docker.build "ajeeshdocker/emp-nodejs-app"
+        def app = docker.build "/r/ajeeshdocker/emp-nodejs-app"
     
         stage "publish"
         app.push 'master'
