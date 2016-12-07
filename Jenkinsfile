@@ -22,7 +22,7 @@ node ('dockerbuilder'){
 
     stage "Testing"
     echo "Stage Build starts"
-    b=build( "Test_job_as_pipeline_downstream_project",param1: "BUILD_NUMBER" )
+    b=build( "Test_job_as_pipeline_downstream_project")
     
     
     
