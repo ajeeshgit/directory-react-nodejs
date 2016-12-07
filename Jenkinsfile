@@ -17,7 +17,7 @@ node ('dockerbuilder'){
         println commit_id
     
         stage "build"
-        def app = docker.build "Test_job_as_pipeline_downstream_project"
+        def app = docker.build "ajeeshdocker/emp-nodejs-app"
     
         stage "publish"
         app.push 'master'
