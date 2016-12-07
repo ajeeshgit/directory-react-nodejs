@@ -18,8 +18,16 @@ node ('dockerbuilder'){
      
 
     stage "Testing"
+    echo "Stage Build starts"
     
-  echo "Build Success"
+    def job = hudson.model.Hudson.instance.getJob("Test_job_as_pipeline_downstream_project")
+    def params = new StringParameterValue('PARAMTEST', "somestring")  
+    def paramsAction = new ParametersAction(params) 
+    def cause = new hudson.model.Cause.UpstreamCause(currentBuild)
+    def causeAction = new hudson.model.CauseAction(cause) 
+    hudson.model.Hudson.instance.queue.schedule(job, 0, causeAction, paramsAction) 
+    
+    
     
      
 }
