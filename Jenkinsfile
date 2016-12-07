@@ -24,8 +24,8 @@ node ('dockerbuilder'){
         //app.push "${commit_id}"
             
          sh "mkdir -p apps/api/priv/static/"
-        sh "chmod 755 ./versioncreator.sh"
-        sh "./versioncreator.sh"
+       // sh "chmod 755 ./versioncreator.sh"
+       // sh "./versioncreator.sh"
      
     }
     
