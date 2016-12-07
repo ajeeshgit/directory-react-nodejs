@@ -17,7 +17,7 @@ node ('dockerbuilder'){
         println commit_id
     
         stage "build"
-       def app = docker.build "ajeeshdocker/nginx-conf"
+       def app = docker.build "ajeeshdocker/emp-nginx-app"
     
         stage "publish"
         app.push 'master'
