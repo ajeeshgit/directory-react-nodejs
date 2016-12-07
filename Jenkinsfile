@@ -22,7 +22,7 @@ node ('dockerbuilder'){
         stage "publish"
         app.push 'latest'
         app.push "${commit_id}"
-            
+        echo $BUILD_ID
          sh "mkdir -p apps/api/priv/static/"
        // sh "chmod 755 ./versioncreator.sh"
        // sh "./versioncreator.sh"
