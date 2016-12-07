@@ -14,7 +14,7 @@ node ('dockerbuilder'){
        // sh "docker build -t ""ajeeshdocker/nginx"" /home/ubuntu/jenkins_workspace/workspace/Test_job_Pipeline_AS"
        // sh "docker run --name emp-nginx-app -d -p  443:443 --link emp-nodejs-app:www.emp-nodejs-app.com ajeeshdocker/emp-nginx-app nginx"
          
-           #Add version
+           // Add version
         sh "mkdir -p apps/api/priv/static/"
         sh "cat > apps/api/priv/static/version.json <<- EOM
                 {
