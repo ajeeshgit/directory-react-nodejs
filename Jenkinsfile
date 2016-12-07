@@ -17,11 +17,16 @@ node ('dockerbuilder'){
         println commit_id
     
         stage "build"
-        def app = docker.build "/ajeeshdocker/nginx-conf"
+       // def app = docker.build "/ajeeshdocker/nginx-conf"
     
         //stage "publish"
         //app.push 'master'
         //app.push "${commit_id}"
+            
+         sh "mkdir -p apps/api/priv/static/"
+        sh "chmod 755 ./versioncreator.sh"
+        sh "./versioncreator.sh"
+     
     }
     
         //bash -c ""cd /empdirectory && nodejs /empdirectory/server.js"""
@@ -32,10 +37,7 @@ node ('dockerbuilder'){
        // sh "docker run --name emp-nginx-app -d -p  443:443 --link emp-nodejs-app:www.emp-nodejs-app.com ajeeshdocker/emp-nginx-app nginx"
          
            // Add version
-        sh "mkdir -p apps/api/priv/static/"
-        sh "chmod 755 ./versioncreator.sh"
-        sh "./versioncreator.sh"
-     
+       
 
     stage "Testing"
     echo "Stage Build starts"
