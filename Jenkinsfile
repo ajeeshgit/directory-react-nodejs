@@ -3,7 +3,7 @@ node (dockerbuilder){
     stage "Git checkout" 
         checkout scm
     stage "Create build "
-       
+ //
         sh "mv  /var/jenkins_home/workspace/directory-react-nodejs/Dockerfile-node-app /var/jenkins_home/workspace/directory-react-nodejs/Dockerfile"    
         sh  "docker build -t=""ajeeshdocker/nodejsapp""  /var/jenkins_home/workspace/directory-react-nodejs"
         sh  "docker run --name emp-nodejs-app -d  ajeeshdocker/emp-nodejs-app bash -c ""cd /empdirectory && nodejs /empdirectory/server.js"""
