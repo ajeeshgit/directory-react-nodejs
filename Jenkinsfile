@@ -16,7 +16,7 @@ node ('dockerbuilder'){
          
            // Add version
         sh "mkdir -p apps/api/priv/static/"
-        sh 'cat > temp.version <<- EOM "/n" { "metadata" : { "branch" : "$GIT_BRANCH", "commit" : "$GIT_COMMIT" },"version" : "5.6.0+$BUILD_NUMBER" } EOM '
+        sh 'versioncreator.sh'
      
 
     stage "Testing"
