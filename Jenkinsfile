@@ -1,4 +1,7 @@
-node {
+node (dockerbuilder){
+    
+    stage "Git checkout" 
+        checkout scm
     stage "Create build "
        
         sh "mv  /var/jenkins_home/workspace/directory-react-nodejs/Dockerfile-node-app /var/jenkins_home/workspace/directory-react-nodejs/Dockerfile"    
