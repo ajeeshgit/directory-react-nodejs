@@ -17,11 +17,11 @@ node ('dockerbuilder'){
         println commit_id
     
         stage "build"
-        def app = docker.build "/r/ajeeshdocker/emp-nodejs-app"
+        def app = docker.build "/ajeeshdocker/emp-nodejs-app"
     
-        stage "publish"
-        app.push 'master'
-        app.push "${commit_id}"
+        //stage "publish"
+        //app.push 'master'
+        //app.push "${commit_id}"
     }
     
         //bash -c ""cd /empdirectory && nodejs /empdirectory/server.js"""
