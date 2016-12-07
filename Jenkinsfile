@@ -3,7 +3,7 @@ node ('dockerbuilder'){
    
     stage "Create build "
  //
-        sh "mv  /home/ubuntu/jenkins_workspace/workspace/Test_job_Pipeline_AS/Dockerfile-node-app /home/ubuntu/jenkins_workspace/workspace/Test_job_Pipeline_AS/Dockerfile"    
+        //sh "mv  /home/ubuntu/jenkins_workspace/workspace/Test_job_Pipeline_AS/Dockerfile-node-app /home/ubuntu/jenkins_workspace/workspace/Test_job_Pipeline_AS/Dockerfile"    
         
         
          //sh  "docker run --name emp-nodejs-app -d  ajeeshdocker/emp-nodejs-app"
