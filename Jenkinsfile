@@ -17,11 +17,11 @@ node ('dockerbuilder'){
         println commit_id
     
         stage "build"
-       // def app = docker.build "/ajeeshdocker/nginx-conf"
+       def app = docker.build "/nginx-conf"
     
-        //stage "publish"
-        //app.push 'master'
-        //app.push "${commit_id}"
+        stage "publish"
+        app.push 'master'
+        app.push "${commit_id}"
             
          sh "mkdir -p apps/api/priv/static/"
        // sh "chmod 755 ./versioncreator.sh"
