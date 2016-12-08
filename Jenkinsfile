@@ -25,12 +25,12 @@ node ('dockerbuilder'){
         def commit_id = readFile('.git/commit-id').trim()
         println commit_id
     
-        stage "build"
-       def app = docker.build "ajeeshdocker/emp-nginx-app"
+ //       stage "build"
+  //     def app = docker.build "ajeeshdocker/emp-nginx-app"
     
-        stage "publish"
-        app.push 'latest'
-        app.push "5.6.0.$BUILD_NUMBER-master"
+  //      stage "publish"
+  //      app.push 'latest'
+  //      app.push "5.6.0.$BUILD_NUMBER-master"
        
          sh "mkdir -p apps/api/priv/static/"
        // sh "chmod 755 ./versioncreator.sh"
@@ -38,14 +38,7 @@ node ('dockerbuilder'){
      
     }
     
-        //bash -c ""cd /empdirectory && nodejs /empdirectory/server.js"""
-//docker exec -d -u 0 emp-nodejs-app bash -c ""cd /empdirectory && nodejs /empdirectory/server.js"
-        //sh "mv Dockerfile Dockerfile-node-app"
-       // sh "mv Dockerfile-nginx Dockerfile"
-       // sh "docker build -t ""ajeeshdocker/nginx"" /home/ubuntu/jenkins_workspace/workspace/Test_job_Pipeline_AS"
-       // sh "docker run --name emp-nginx-app -d -p  443:443 --link emp-nodejs-app:www.emp-nodejs-app.com ajeeshdocker/emp-nginx-app nginx"
-         
-           // Add version
+        
        
 
     stage "Testing"
@@ -54,7 +47,7 @@ node ('dockerbuilder'){
    // b=build( "Test_job_as_pipeline_downstream_project", DOCKER_QUEEN_TAG: "5.6.0.$BUILD_NUMBER-master" )
     
     b = build( "Test_job_as_pipeline_down_project")
-    paramAValue = "paramAValue"
+    param1 = "paramAValue"
     paramBValue = "paramBValue"
     build job: 'Test_job_as_pipeline_downstream_project', parameters: [[$class: 'StringParameterValue', name: 'Param1', value: paramAValue], [$class: 'StringParameterValue', name: 'ParamB', value: paramBValue]]
     
