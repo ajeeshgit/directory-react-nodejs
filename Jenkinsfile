@@ -54,6 +54,9 @@ node ('dockerbuilder'){
    // b=build( "Test_job_as_pipeline_downstream_project", DOCKER_QUEEN_TAG: "5.6.0.$BUILD_NUMBER-master" )
     
     b = build( "Test_job_as_pipeline_down_project")
+    paramAValue = "paramAValue"
+    paramBValue = "paramBValue"
+    build job: 'Test_job_as_pipeline_downstream_project', parameters: [[$class: 'StringParameterValue', name: 'Param1', value: paramAValue], [$class: 'StringParameterValue', name: 'ParamB', value: paramBValue]]
     
     
     
