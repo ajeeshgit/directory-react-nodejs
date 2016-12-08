@@ -5,7 +5,7 @@ node ('dockerbuilder'){
  //
         //sh "mv  /home/ubuntu/jenkins_workspace/workspace/Test_job_Pipeline_AS/Dockerfile-node-app /home/ubuntu/jenkins_workspace/workspace/Test_job_Pipeline_AS/Dockerfile"    
        
-    sh "echo ${env.BRANCH_NAME}"
+    
          //sh  "docker run --name emp-nodejs-app -d  ajeeshdocker/emp-nodejs-app"
     //Stage "Checkout SCM"
         docker.withRegistry('', 'ajeeshdocker') {
@@ -41,6 +41,7 @@ node ('dockerbuilder'){
 
     stage "Testing"
     echo "Stage Build starts"
+    sh "echo ${env.BUILD_NUMBER}"
     b=build( "Test_job_as_pipeline_downstream_project")
     
     
