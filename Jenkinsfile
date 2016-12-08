@@ -21,7 +21,7 @@ node ('dockerbuilder'){
     
         stage "publish"
         app.push 'latest'
-        app.push "${commit_id}"
+        app.push "{5.6.0.$BUILD_NUMBER-master"
        
          sh "mkdir -p apps/api/priv/static/"
        // sh "chmod 755 ./versioncreator.sh"
