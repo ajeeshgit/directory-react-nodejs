@@ -2,12 +2,21 @@ node ('dockerbuilder'){
     
    
     stage "Create build "
- //
-        //sh "mv  /home/ubuntu/jenkins_workspace/workspace/Test_job_Pipeline_AS/Dockerfile-node-app /home/ubuntu/jenkins_workspace/workspace/Test_job_Pipeline_AS/Dockerfile"    
-       
+ 
+    sh '''mkdir -p apps/api/priv/static/
+        cat > apps/api/priv/static/version.json <<- EOM
+        {
+         "metadata" : {
+           "branch" : "$GIT_BRANCH",
+          "commit" : "$GIT_COMMIT"
+         },
+         "version" : "5.6.0+$BUILD_NUMBER"
+        }
+        EOM'''
     
-         //sh  "docker run --name emp-nodejs-app -d  ajeeshdocker/emp-nodejs-app"
-    //Stage "Checkout SCM"
+    
+    
+    
         docker.withRegistry('', 'ajeeshdocker') {
     
         git url: "https://github.com/ajeeshgit/nginx-conf/", Branch: 'DevBranch', credentialsId: 'ajeeshgit'
@@ -44,7 +53,7 @@ node ('dockerbuilder'){
     sh "echo ${env.BUILD_NUMBER}"
    // b=build( "Test_job_as_pipeline_downstream_project", DOCKER_QUEEN_TAG: "5.6.0.$BUILD_NUMBER-master" )
     
-    b = build( "Test_job_as_pipeline_downstream_project", param1: "foo", param2: "bar" )
+    b = build( "Test_job_as_pipeline_downstream_project", param1: params["A_parameter"] )
     
     
     
