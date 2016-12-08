@@ -53,7 +53,7 @@ node ('dockerbuilder'){
     sh "echo ${env.BUILD_NUMBER}"
    // b=build( "Test_job_as_pipeline_downstream_project", DOCKER_QUEEN_TAG: "5.6.0.$BUILD_NUMBER-master" )
     
-    b = build( "Test_job_as_pipeline_downstream_project", param1: params["A_parameter"] )
+    b = build( "Test_job_as_pipeline_down_project")
     
     
     
