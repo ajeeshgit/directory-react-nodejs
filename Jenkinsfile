@@ -42,7 +42,7 @@ node ('dockerbuilder'){
     stage "Testing"
     echo "Stage Build starts"
     sh "echo ${env.BUILD_NUMBER}"
-    b=build( "Test_job_as_pipeline_downstream_project")
+    b=build( "Test_job_as_pipeline_downstream_project", DOCKER_QUEEN_TAG: "5.6.0.$BUILD_NUMBER-master")
     
     
     
