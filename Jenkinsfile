@@ -5,7 +5,7 @@ node ('dockerbuilder'){
  //
         //sh "mv  /home/ubuntu/jenkins_workspace/workspace/Test_job_Pipeline_AS/Dockerfile-node-app /home/ubuntu/jenkins_workspace/workspace/Test_job_Pipeline_AS/Dockerfile"    
         
-        
+         echo $(env.$BUILD_NUMBER)
          //sh  "docker run --name emp-nodejs-app -d  ajeeshdocker/emp-nodejs-app"
     //Stage "Checkout SCM"
         docker.withRegistry('', 'ajeeshdocker') {
@@ -22,7 +22,7 @@ node ('dockerbuilder'){
         stage "publish"
         app.push 'latest'
         app.push "${commit_id}"
-        echo $BUILD_ID
+       
          sh "mkdir -p apps/api/priv/static/"
        // sh "chmod 755 ./versioncreator.sh"
        // sh "./versioncreator.sh"
