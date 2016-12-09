@@ -30,7 +30,7 @@ node ('dockerbuilder'){
                     println commit_id
                     def subject = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
                     def bnum = "'${env.BUILD_NUMBER}'"
-                    println subject
+                    println1 subject
                     notifySlack("$subject","$bnum","#gitcitest")
         
    
@@ -42,9 +42,7 @@ node ('dockerbuilder'){
                       //      app.push 'latest'
                       //      app.push "5.6.0.$BUILD_NUMBER-master"
 
-                 sh "sdskdir -p apps/api/priv/static/"
-                   // sh "chmod 755 ./versioncreator.sh"
-                   // sh "./versioncreator.sh"
+              
      
                 }
     
@@ -59,7 +57,7 @@ node ('dockerbuilder'){
                 param1 = "paramAValue"
                 //paramBValue = "paramBValue"
                 //build job: 'Test_job_as_pipeline_downstream_project', parameters: [[$class: 'StringParameterValue', name: 'Param1', value: paramAValue], [$class: 'StringParameterValue', name: 'ParamB', value: paramBValue]]
-
+ 
     
      
     
@@ -70,7 +68,8 @@ node ('dockerbuilder'){
 
 catch (e)
         {
-           notifySlack("Failed", bnum, channel)  
+           text = "Fail"
+           notifySlack(text, bnum, channel)  
            throw e
         }
 
