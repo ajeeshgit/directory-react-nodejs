@@ -68,13 +68,20 @@ node ('dockerbuilder'){
 catch (e)
         {
            text = "Fail"
-           notifySlack(text, bnum, channel)  
+             def subject = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
+             def bnum = "'${env.BUILD_NUMBER}'"
+             notifySlack("$subject","$bnum","#gitcitest")
+             
            throw e
         }
     
     finally {
     // Success or failure, always send notifications
-    notifySlack(currentBuild.result,bnum, channel)
+        text = "Fail"
+             def subject = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
+             def bnum = "'${env.BUILD_NUMBER}'"
+           
+             notifySlack(currentBuild.result,"$bnum","#gitcitest")
   }
 
 }
