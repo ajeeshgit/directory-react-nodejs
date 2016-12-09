@@ -4,6 +4,13 @@ node ('dockerbuilder'){
     
    // stage 'deployment' demo for approval flow
     //input 'Do you approve deployment?'
+ import jenkins.*
+import jenkins.model.*
+import hudson.*
+import hudson.model.*
+import hudson.console.*
+import groovy.time.*
+import hudson.plugins.git.*
     
     try 
     {
@@ -77,7 +84,9 @@ catch (e)
     
     finally {
     // Success or failure, always send notifications
-        println "${currentBuild.result}"
+        
+        def buildResult = build.getEnvironment().get(Test_job_Pipeline_AS)
+        println "${buildResult}"
              def bnum = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
              notifySlack("$currentBuild.result","$bnum","#gitcitest")
   }
