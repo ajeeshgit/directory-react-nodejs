@@ -28,7 +28,9 @@ node ('dockerbuilder'){
         sh "git rev-parse HEAD > .git/commit-id"
         def commit_id = readFile('.git/commit-id').trim()
         println commit_id
-        notifySlack("Success","#gitcitest")
+        def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
+        println subject
+        notifySlack("subject","#gitcitest")
         
    
         
@@ -69,8 +71,7 @@ def notifySlack(text, channel) {
     
   
     def slackURL = 'https://peeksters.slack.com/services/hooks/jenkins-ci?token=FDdQdnbrJfafDlc9yfJBamxR'
-    def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
-    println subject
+    
     def payload = JsonOutput.toJson([text      :  text ,
                                      channel   : channel,
                                      icon_emoji: ":jenkins:"])
