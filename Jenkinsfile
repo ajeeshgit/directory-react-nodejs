@@ -71,7 +71,7 @@ def notifySlack(text, channel) {
     def slackURL = 'https://peeksters.slack.com/services/hooks/jenkins-ci?token=FDdQdnbrJfafDlc9yfJBamxR'
     def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
     println subject
-    def payload = JsonOutput.toJson([text      :  subject ,
+    def payload = JsonOutput.toJson([text      :  text ,
                                      channel   : channel,
                                      icon_emoji: ":jenkins:"])
     sh "curl -X POST --data-urlencode \'payload=${payload}\' ${slackURL}"
