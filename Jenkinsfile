@@ -29,8 +29,9 @@ node ('dockerbuilder'){
         def commit_id = readFile('.git/commit-id').trim()
         println commit_id
         def subject = "'${env.JOB_NAME}'"
+        def bnum = "'${env.BUILD_NUMBER}'"
         println subject
-            notifySlack("$subject","#gitcitest")
+            notifySlack("$subject","$bnum","#gitcitest")
         
    
         
@@ -67,12 +68,13 @@ node ('dockerbuilder'){
 
 
    import groovy.json.JsonOutput
-def notifySlack(text, channel) {
+def notifySlack(text, bnum, channel) {
     
     println "text is ${text}"
     
     def slackURL = 'https://peeksters.slack.com/services/hooks/jenkins-ci?token=FDdQdnbrJfafDlc9yfJBamxR'
     def payload = JsonOutput.toJson([text      : text,
+                                     text      : bnum,
                                      channel   : channel,
                                      icon_emoji: ":jenkins:"])
     sh "curl -X  POST --data-urlencode \'payload=${payload}\' ${slackURL}"
