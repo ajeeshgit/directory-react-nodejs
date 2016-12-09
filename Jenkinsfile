@@ -74,6 +74,7 @@ catch (e)
            throw e
         }
 
+}
 
    import groovy.json.JsonOutput
 def notifySlack(text, bnum, channel) {
@@ -91,4 +92,4 @@ def notifySlack(text, bnum, channel) {
     
 }     
       
-}
+
