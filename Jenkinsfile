@@ -66,10 +66,10 @@ node ('dockerbuilder'){
 
    import groovy.json.JsonOutput
 def notifySlack(text, channel) {
-     text = sh "echo '${env.JOB_NAME} [${env.BUILD_NUMBER}]'" 
+       '${env.JOB_NAME} [${env.BUILD_NUMBER}]' 
    // def slackURL = 'https://hooks.slack.com/services/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'
     def slackURL = 'https://peeksters.slack.com/services/hooks/jenkins-ci?token=FDdQdnbrJfafDlc9yfJBamxR'
-    def payload = JsonOutput.toJson([text      : text,
+    def payload = JsonOutput.toJson([text      : "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})",
                                      channel   : channel,
                                      icon_emoji: ":jenkins:"])
     sh "curl -X POST --data-urlencode \'payload=${payload}\' ${slackURL}"
