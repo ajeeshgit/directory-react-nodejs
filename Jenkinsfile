@@ -30,7 +30,7 @@ node ('dockerbuilder'){
         println commit_id
         def subject = "'${env.JOB_NAME}'"
         println subject
-            notifySlack("${subject}","#gitcitest")
+            notifySlack("TEST_JOB_SUCCESS","#gitcitest")
         
    
         
@@ -70,7 +70,7 @@ node ('dockerbuilder'){
 def notifySlack(text, channel) {
     
     println "text is ${text}"
-    text = "Success"
+    
     def slackURL = 'https://peeksters.slack.com/services/hooks/jenkins-ci?token=FDdQdnbrJfafDlc9yfJBamxR'
     def payload = JsonOutput.toJson([text      : text,
                                      channel   : channel,
