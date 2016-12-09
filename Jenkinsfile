@@ -51,7 +51,7 @@ node ('dockerbuilder'){
     //build job: 'Test_job_as_pipeline_downstream_project', parameters: [[$class: 'StringParameterValue', name: 'Param1', value: paramAValue], [$class: 'StringParameterValue', name: 'ParamB', value: paramBValue]]
     
     
-    #
+     
     
      
 }
