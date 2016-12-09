@@ -24,7 +24,7 @@ node ('dockerbuilder'){
         sh "git rev-parse HEAD > .git/commit-id"
         def commit_id = readFile('.git/commit-id').trim()
         println commit_id
-        notifySlack("Success","gitcitest")
+        notifySlack("Success","#gitcitest")
  //       stage "build"
   //     def app = docker.build "ajeeshdocker/emp-nginx-app"
     
@@ -44,7 +44,7 @@ node ('dockerbuilder'){
     echo "Stage Build starts"
     sh "echo ${env.BUILD_NUMBER}"
    // b=build( "Test_job_as_pipeline_downstream_project", DOCKER_QUEEN_TAG: "5.6.0.$BUILD_NUMBER-master" )
-    
+     
     b = build( "Test_job_as_pipeline_down_project")
     param1 = "paramAValue"
     //paramBValue = "paramBValue"
