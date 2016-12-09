@@ -25,7 +25,9 @@ node ('dockerbuilder'){
         def commit_id = readFile('.git/commit-id').trim()
         println commit_id
         notifySlack("Success","#gitcitest")
-        slackSend channel: '#gitcitest', color: 'good', message: 'Success', teamDomain: 'peeksters', token: 'FDdQdnbrJfafDlc9yfJBamxR'
+        
+   
+        
  //       stage "build"
   //     def app = docker.build "ajeeshdocker/emp-nginx-app"
     
@@ -66,5 +68,7 @@ def notifySlack(text, channel) {
                                      username  : "ajeesh",
                                      icon_emoji: ":jenkins:"])
     sh "curl -X POST --data-urlencode \'payload=${payload}\' ${slackURL}"
+    slackSend channel: '#gitcitest', color: 'good', message: 'Success', teamDomain: 'peeksters', token: 'FDdQdnbrJfafDlc9yfJBamxR'
+    
 }     
       
