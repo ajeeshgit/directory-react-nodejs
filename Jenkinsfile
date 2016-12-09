@@ -70,7 +70,7 @@ node ('dockerbuilder'){
 def notifySlack(text, channel) {
     
     println "text is ${text}"
-    def text = "Success"
+    text = "Success"
     def slackURL = 'https://peeksters.slack.com/services/hooks/jenkins-ci?token=FDdQdnbrJfafDlc9yfJBamxR'
     def payload = JsonOutput.toJson([text      : text,
                                      channel   : channel,
