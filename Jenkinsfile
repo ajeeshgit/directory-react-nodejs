@@ -30,7 +30,6 @@ node ('dockerbuilder'){
                     println commit_id
                     def subject = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
                     def bnum = "'${env.BUILD_NUMBER}'"
-                    println1 subject
                     notifySlack("$subject","$bnum","#gitcitest")
         
    
