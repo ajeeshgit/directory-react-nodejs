@@ -4,13 +4,7 @@ node ('dockerbuilder'){
     
    // stage 'deployment' demo for approval flow
     //input 'Do you approve deployment?'
- import jenkins.*
-import jenkins.model.*
-import hudson.*
-import hudson.model.*
-import hudson.console.*
-import groovy.time.*
-import hudson.plugins.git.*
+
     
     try 
     {
