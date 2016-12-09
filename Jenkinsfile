@@ -75,7 +75,7 @@ def notifySlack(text, channel) {
     def payload = JsonOutput.toJson([text      : text,
                                      channel   : channel,
                                      icon_emoji: ":jenkins:"])
-    sh "curl -X -g POST --data-urlencode \'payload=${payload}\' ${slackURL}"
+    sh "curl -X  POST --data-urlencode \'payload=${payload}\' ${slackURL}"
     
   
     
