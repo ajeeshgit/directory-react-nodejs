@@ -38,8 +38,7 @@ node ('dockerbuilder'){
      
     }
     
-        
-       
+ 
 
     stage "Testing"
     echo "Stage Build starts"
@@ -50,9 +49,21 @@ node ('dockerbuilder'){
     param1 = "paramAValue"
     paramBValue = "paramBValue"
     build job: 'Test_job_as_pipeline_downstream_project', parameters: [[$class: 'StringParameterValue', name: 'Param1', value: paramAValue], [$class: 'StringParameterValue', name: 'ParamB', value: paramBValue]]
-    
+    notifySlack("Success",devops)
     
     
     
      
 }
+
+
+   import groovy.json.JsonOutput
+def notifySlack(text, channel) {
+    def slackURL = 'https://hooks.slack.com/services/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'
+    def payload = JsonOutput.toJson([text      : text,
+                                     channel   : channel,
+                                     username  : "jenkins",
+                                     icon_emoji: ":jenkins:"])
+    sh "curl -X POST --data-urlencode \'payload=${payload}\' ${slackURL}"
+}     
+      
