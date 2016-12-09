@@ -81,7 +81,7 @@ catch (e)
              def subject = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
              def bnum = "'${env.BUILD_NUMBER}'"
            
-             notifySlack(currentBuild.result,"$bnum","#gitcitest")
+             notifySlack("$currentBuild.result","$bnum","#gitcitest")
   }
 
 }
