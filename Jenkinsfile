@@ -74,7 +74,7 @@ catch (e)
     
     finally {
     // Success or failure, always send notifications
-    notifyBuild(currentBuild.result)
+    notifySlack(currentBuild.result,bnum, channel)
   }
 
 }
