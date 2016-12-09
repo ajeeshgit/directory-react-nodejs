@@ -5,6 +5,8 @@ node ('dockerbuilder'){
    // stage 'deployment' demo for approval flow
     //input 'Do you approve deployment?'
     
+    try 
+    {
     stage "Create build "
  
     sh '''mkdir -p apps/api/priv/static/
@@ -65,6 +67,14 @@ node ('dockerbuilder'){
     
      
 }
+
+}
+
+catch (e)
+        {
+           notifySlack("Failed", bnum, channel)  
+           throw e
+        }
 
 
    import groovy.json.JsonOutput
