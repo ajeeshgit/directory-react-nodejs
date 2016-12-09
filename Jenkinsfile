@@ -42,7 +42,7 @@ node ('dockerbuilder'){
                       //      app.push 'latest'
                       //      app.push "5.6.0.$BUILD_NUMBER-master"
 
-                 sh "mkdir -p apps/api/priv/static/"
+                 sh "sdskdir -p apps/api/priv/static/"
                    // sh "chmod 755 ./versioncreator.sh"
                    // sh "./versioncreator.sh"
      
