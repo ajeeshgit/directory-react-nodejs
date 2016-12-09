@@ -69,8 +69,7 @@ def notifySlack(text, channel) {
                                      teamDomain : "peeksters",
                                      icon_emoji: ":jenkins:"])
     sh "curl -X POST --data-urlencode \'payload=${payload}\' ${slackURL}"
-   // sh 'slackSend channel: \'#gitcitest\', color: \'good\', message: \'Success\', teamDomain: \'peeksters\', token: \'FDdQdnbrJfafDlc9yfJBamxR\''
-
+    slackSend channel: '#gitcitest', message: "Starting slacktest  test"
     
 }     
       
