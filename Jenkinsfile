@@ -1,6 +1,10 @@
+
+
 node ('dockerbuilder'){
     
-   
+    stage 'deployment'
+    input 'Do you approve deployment?'
+    
     stage "Create build "
  
     sh '''mkdir -p apps/api/priv/static/
