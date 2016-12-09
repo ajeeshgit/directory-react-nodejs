@@ -24,7 +24,7 @@ node ('dockerbuilder'){
         sh "git rev-parse HEAD > .git/commit-id"
         def commit_id = readFile('.git/commit-id').trim()
         println commit_id
-        notifySlack("Success",devops)
+        notifySlack("Success","devops")
  //       stage "build"
   //     def app = docker.build "ajeeshdocker/emp-nginx-app"
     
