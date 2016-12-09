@@ -24,7 +24,7 @@ node ('dockerbuilder'){
         sh "git rev-parse HEAD > .git/commit-id"
         def commit_id = readFile('.git/commit-id').trim()
         println commit_id
-    
+        notifySlack("Success",devops)
  //       stage "build"
   //     def app = docker.build "ajeeshdocker/emp-nginx-app"
     
@@ -47,9 +47,9 @@ node ('dockerbuilder'){
     
     b = build( "Test_job_as_pipeline_down_project")
     param1 = "paramAValue"
-    paramBValue = "paramBValue"
-    build job: 'Test_job_as_pipeline_downstream_project', parameters: [[$class: 'StringParameterValue', name: 'Param1', value: paramAValue], [$class: 'StringParameterValue', name: 'ParamB', value: paramBValue]]
-    notifySlack("Success",devops)
+    //paramBValue = "paramBValue"
+    //build job: 'Test_job_as_pipeline_downstream_project', parameters: [[$class: 'StringParameterValue', name: 'Param1', value: paramAValue], [$class: 'StringParameterValue', name: 'ParamB', value: paramBValue]]
+    
     
     
     
