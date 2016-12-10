@@ -21,7 +21,7 @@ node ('dockerbuilder'){
                                }
                    EOM'''
 
-            docker.withRegistry('', 'ajeeshdockerss')
+            docker.withRegistry('', 'ajeeshdocker')
                 {
    
                     git url: "https://github.com/ajeeshgit/nginx-conf/", Branch: 'DevBranch', credentialsId: 'ajeeshgit'
