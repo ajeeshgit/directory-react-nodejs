@@ -21,7 +21,7 @@ node ('dockerbuilder'){
                                }
                    EOM'''
 
-            docker.withRegistry('', 'ajeeshdocker1223')
+            docker.withRegistry('', 'ajeeshdocker')
                 {
    
                     git url: "https://github.com/ajeeshgit/nginx-conf/", Branch: 'DevBranch', credentialsId: 'ajeeshgit'
@@ -52,12 +52,11 @@ node ('dockerbuilder'){
                 echo "Stage Build starts"
                 sh "echo ${env.BUILD_NUMBER}"
                // b=build( "Test_job_as_pipeline_downstream_project", DOCKER_QUEEN_TAG: "5.6.0.$BUILD_NUMBER-master" )
-
-                b = build( "Test_job_as_pipeline_down_project")
-                param1 = "paramAValue"
-                //paramBValue = "paramBValue"
-                //build job: 'Test_job_as_pipeline_downstream_project', parameters: [[$class: 'StringParameterValue', name: 'Param1', value: paramAValue], [$class: 'StringParameterValue', name: 'ParamB', value: paramBValue]]
- 
+                paramAValue = "paramAValue"
+                paramBValue = "paramBValue"
+                build job: 'Test_job_as_pipeline_down_project', parameters: [[$class: 'StringParameterValue', name: 'ParamA', value: paramAValue], [$class: 'StringParameterValue', name: 'ParamB', value: paramBValue]]
+               // b = build( "Test_job_as_pipeline_down_project")
+                
                  
                 
     
