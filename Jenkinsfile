@@ -70,7 +70,8 @@ catch (e)
         {
            text = "Fail"
              def subject = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
-            buildStatus = currentBuild.result
+             currentBuild.result = "FAILED"
+             buildStatus = currentBuild.result
              notifySlack("$buildStatus","$subject","#gitcitest")
              
            throw e
