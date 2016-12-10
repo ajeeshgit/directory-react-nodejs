@@ -59,7 +59,7 @@ node ('dockerbuilder'){
                 //build job: 'Test_job_as_pipeline_downstream_project', parameters: [[$class: 'StringParameterValue', name: 'Param1', value: paramAValue], [$class: 'StringParameterValue', name: 'ParamB', value: paramBValue]]
  
     
-     
+     #
     
      
 }
@@ -70,8 +70,8 @@ catch (e)
         {
            text = "Fail"
              def subject = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
-             def bnum = "'${env.BUILD_NUMBER}'"
-             notifySlack("$subject","$bnum","#gitcitest")
+            buildStatus = currentBuild.result
+             notifySlack("$buildStatus","$subject","#gitcitest")
              
            throw e
         }
