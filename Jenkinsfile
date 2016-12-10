@@ -21,7 +21,7 @@ node ('dockerbuilder'){
                                }
                    EOM'''
 
-            docker.withRegistry('', 'ajeeshdocker')
+            docker.withRegistry('', 'ajeeshdocker1223')
                 {
    
                     git url: "https://github.com/ajeeshgit/nginx-conf/", Branch: 'DevBranch', credentialsId: 'ajeeshgit'
@@ -58,8 +58,8 @@ node ('dockerbuilder'){
                 //paramBValue = "paramBValue"
                 //build job: 'Test_job_as_pipeline_downstream_project', parameters: [[$class: 'StringParameterValue', name: 'Param1', value: paramAValue], [$class: 'StringParameterValue', name: 'ParamB', value: paramBValue]]
  
-    
-     #
+                 
+                
     
      
 }
