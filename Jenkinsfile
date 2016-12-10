@@ -79,10 +79,10 @@ catch (e)
     finally {
     // Success or failure, always send notifications
         
-        def buildResult = build.getEnvironment().get(Test_job_Pipeline_AS)
-        println "${buildResult}"
+        buildStatus = currentBuild.result
+        buildStatus =  buildStatus ?: 'SUCCESSFUL'
              def bnum = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
-             notifySlack("$currentBuild.result","$bnum","#gitcitest")
+             notifySlack("$buildStatus","$bnum","#gitcitest")
   }
 
 }
