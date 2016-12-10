@@ -91,11 +91,14 @@ catch (e)
 def notifySlack(text, bnum, channel) {
     
     println "text is ${text}"
-    
+    def author = "${CHANGE_AUTHOR}"
+    def jobURL = "${JOB_URL}"
     def slackURL = 'https://peeksters.slack.com/services/hooks/jenkins-ci?token=FDdQdnbrJfafDlc9yfJBamxR'
     def payload = JsonOutput.toJson([text      : text,
                                      bnum      : bnum,
                                      channel   : channel,
+                                     author    : author,
+                                     jobURL    : jobURL,
                                      icon_emoji: ":jenkins:"])
     sh "curl -X  POST --data-urlencode \'payload=${payload}\' ${slackURL}"
     
