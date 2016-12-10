@@ -29,7 +29,7 @@ node ('dockerbuilder'){
                     sh "git rev-parse HEAD > .git/commit-id"
                     def commit_id = readFile('.git/commit-id').trim()
                     println commit_id
-                    def subject = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}' use '${env.CHANGE_AUTHOR}' JenkinsJOBurl is '${env.JOB_URL}'"
+                    def subject = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}' user is  '${env.CHANGE_AUTHOR}' Dispalyname is '${env.CHANGE_AUTHOR_DISPLAY_NAME}'"
                     def bnum = "'${env.BUILD_NUMBER}'"
                     notifySlack("$subject","$bnum","#gitcitest")
         
