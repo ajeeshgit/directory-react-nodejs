@@ -81,8 +81,16 @@ catch (e)
         
         buildStatus = currentBuild.result
         buildStatus =  buildStatus ?: 'SUCCESSFUL'
-             def bnum = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
-             notifySlack("$buildStatus","$bnum","#gitcitest")
+        
+        if (buildstatus == 'SUCCESSFUL')
+              {
+                tagname = "5.6.0.'${env.BUILD_NUMBER}'"
+                  sh 'git tag '${tagname}''
+                git push origin --tags
+                def bnum = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
+                notifySlack("$buildStatus","$bnum","#gitcitest")
+              }
+             
   }
 
 }
