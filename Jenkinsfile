@@ -91,8 +91,9 @@ catch (e)
                    
                   sh ("git tag  -a -f -m 'tag is ${env.BUILD_NUMBER} ' '${env.BUILD_NUMBER}' ")
                   sh 'git --version' 
-                  sh ("git push git@github.com:ajeeshgit/directory-react-nodejs.git '${env.BUILD_NUMBER}' ")
-                  
+                  sh ("git remote set-url origin https://github.com/ajeeshgit/directory-react-nodejs.git ")
+                  sh ("git push https://github.com/ajeeshgit/directory-react-nodejs.git --tags")
+                  sh 'git tag -l'
                   
                 def bnum = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
                 notifySlack("$buildStatus","$bnum","#gitcitest")
