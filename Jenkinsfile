@@ -89,7 +89,7 @@ catch (e)
   
                  sh("git config user.name '${repositoryCommiterEmail}'")
                    
-                 sh ("git tag  -a -f -m "tag" '${tagname}' ")
+                 sh ("git tag  -a -f -m 'tag' '${tagname}' ")
                   sh 'git --version' 
                 //  sh 'git push git@github.com:ajeeshgit/directory-react-nodejs.git ${tagname} '
                   
