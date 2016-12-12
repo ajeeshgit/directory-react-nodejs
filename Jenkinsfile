@@ -85,8 +85,9 @@ catch (e)
         if (buildStatus == 'SUCCESSFUL')
               {
                   tagname = "5.6.0.+'${env.BUILD_NUMBER}'"
-                  sh 'echo tag name is $tagname'
-                  sh 'git tag  -a -f -m "Jenkins Git plugin tagging with $tagname" 5.6.0.+${env.BUILD_NUMBER}" ${env.BUILD_NUMBER} '
+                  println tagname
+                  //sh 'echo tag name is $tagname'
+                  sh "git tag  -a -f -m "Jenkins Git plugin tagging with " 5.6.0.+${env.BUILD_NUMBER}"
                   sh 'git --version' 
                   sh 'git push git@github.com:ajeeshgit/directory-react-nodejs.git $tagname '
                   
