@@ -82,7 +82,7 @@ catch (e)
         buildStatus = currentBuild.result
         buildStatus =  buildStatus ?: 'SUCCESSFUL'
         
-        if (buildstatus == 'SUCCESSFUL')
+        if (buildStatus == 'SUCCESSFUL')
               {
                 tagname = "5.6.0.'${env.BUILD_NUMBER}'"
                   sh 'git tag '${tagname}''
