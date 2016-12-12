@@ -24,11 +24,11 @@ node ('dockerbuilder'){
             docker.withRegistry('', 'ajeeshdocker')
                 {
    
-                    git url: "https://github.com/ajeeshgit/nginx-conf/", Branch: 'DevBranch', credentialsId: 'ajeeshgit'
+                    git url: "https://github.com/ajeeshgit/directory-react-nodejs/", Branch: 'Master', credentialsId: 'ajeeshgit'
        
-                    sh "git rev-parse HEAD > .git/commit-id"
-                    def commit_id = readFile('.git/commit-id').trim()
-                    println commit_id
+                    //sh "git rev-parse HEAD > .git/commit-id"
+                    //def commit_id = readFile('.git/commit-id').trim()
+                    //println commit_id
                     def subject = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}' user is  '${env.CHANGE_AUTHOR}' Dispalyname is '${env.CHANGE_AUTHOR_DISPLAY_NAME}'"
                     def bnum = "'${env.BUILD_NUMBER}'"
                     notifySlack("$subject","$bnum","#gitcitest")
@@ -81,15 +81,17 @@ catch (e)
         
         buildStatus = currentBuild.result
         buildStatus =  buildStatus ?: 'SUCCESSFUL'
-        
+        repositoryCommiterEmail = 'ci@peek.com'
         if (buildStatus == 'SUCCESSFUL')
               {
                 def   tagname = "5.6.0.+${env.BUILD_NUMBER}"
                   println tagname
+          
+                 sh("git config user.name '${repositoryCommiterEmail}'")
                   //sh 'echo tag name is $tagname'
-                  sh ("git tag  -a -f -m "tag" ${env.BUILD_NUMBER}")
+                 // sh ("git tag  -a -f -m "tag" ${env.BUILD_NUMBER}")
                   sh 'git --version' 
-                  sh 'git push git@github.com:ajeeshgit/directory-react-nodejs.git ${tagname} '
+                //  sh 'git push git@github.com:ajeeshgit/directory-react-nodejs.git ${tagname} '
                   
                   
                 def bnum = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
