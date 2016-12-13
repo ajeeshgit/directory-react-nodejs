@@ -23,8 +23,8 @@ node ('dockerbuilder'){
 
             docker.withRegistry('', 'ajeeshdocker')
                 {
-                    git url: 'https://github.com:ajeeshgit/directory-react-nodejs/', Branch: 'Master', credentialsId: 'ajeeshgit'
-                   
+                
+                    git url: 'https://github.com/ajeeshgit/directory-react-nodejs.git', Branch: 'Master', credentialsId: 'ajeeshgit'
                     
                     //git url: 'ssh://git@github.com:ajeeshgit/directory-react-nodejs.git',credentialsId: '8dbfb6d2-2549-4c6e-9a6e-994ae8797efc'
                     //sh "git rev-parse HEAD > .git/commit-id"
