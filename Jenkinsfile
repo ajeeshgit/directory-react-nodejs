@@ -24,10 +24,12 @@ node ('dockerbuilder'){
             docker.withRegistry('', 'ajeeshdocker')
                 {
    
-                    git url: "ssh://github.com/ajeeshgit/directory-react-nodejs.git", Branch: 'Master', credentialsId: '87292f7c-ff10-44b4-9feb-83c73068d958'
+                    git url: 'ssh://git@github.com:ajeeshgit/directory-react-nodejs.git', Branch: 'Master', credentialsId: '87292f7c-ff10-44b4-9feb-83c73068d958'
+                    sh "git config user.name \"peekbot\""
                     sh ("git tag  -a -f -m 'tag is ${env.BUILD_NUMBER} ' '${env.BUILD_NUMBER}' ")
-                    sh "git push origin master"
+                    sh("git push origin '${env.BUILD_NUMBER}'") 
                     
+                    //git url: 'ssh://git@github.com:ajeeshgit/directory-react-nodejs.git',credentialsId: '8dbfb6d2-2549-4c6e-9a6e-994ae8797efc'
                     //sh "git rev-parse HEAD > .git/commit-id"
                     //def commit_id = readFile('.git/commit-id').trim()
                     //println commit_id
@@ -91,7 +93,6 @@ catch (e)
                   
                   sshagent (['87292f7c-ff10-44b4-9feb-83c73068d958']){ 
                                     sh ("git tag  -a -f -m 'tag is ${env.BUILD_NUMBER} ' '${env.BUILD_NUMBER}' ")
-                                
                                     sh("git push origin '${env.BUILD_NUMBER}'") 
                                             }
                   sh 'git tag -l'
