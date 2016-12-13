@@ -102,7 +102,7 @@ catch (e)
                               //      sh("GIT_ASKPASS=true ${git} push origin --tags")
                      sh ("git remote set-url origin https://github.com/ajeeshgit/directory-react-nodejs.git ")
            
-                    sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ajeeshgit/directory-react-nodejs.git --tags')
+                    sh('git push https://ajeeshgit:1q2w3e4r!@@github.com/ajeeshgit/directory-react-nodejs.git --tags')
                     sh 'git --version'
                       
                             }
