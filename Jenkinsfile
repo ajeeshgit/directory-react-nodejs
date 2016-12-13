@@ -24,7 +24,7 @@ node ('dockerbuilder'){
             docker.withRegistry('', 'ajeeshdocker')
                 {
    
-                    git url: "https://github.com/ajeeshgit/directory-react-nodejs/", Branch: 'Master', credentialsId: '87292f7c-ff10-44b4-9feb-83c73068d958'
+                    git url: "https://github.com/ajeeshgit/directory-react-nodejs/", Branch: 'Master', credentialsId: 'ajeeshgit'
        
                     //sh "git rev-parse HEAD > .git/commit-id"
                     //def commit_id = readFile('.git/commit-id').trim()
@@ -89,8 +89,8 @@ catch (e)
                   
                   sshagent (['87292f7c-ff10-44b4-9feb-83c73068d958']){ 
                                     sh ("git tag  -a -f -m 'tag is ${env.BUILD_NUMBER} ' '${env.BUILD_NUMBER}' ")
-                                    sh('git push https://github.com/ajeeshgit/directory-react-nodejs 1.0')
-                                   // sh("git push origin '${env.BUILD_NUMBER}'") 
+                                     sh ("git commit -m " test ")
+                                    sh("git push origin '${env.BUILD_NUMBER}'") 
                                             }
                   sh 'git tag -l'
                     
