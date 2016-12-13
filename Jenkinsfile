@@ -89,15 +89,15 @@ catch (e)
                     
                   withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'ajeeshgit', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) 
                             {
-                     sh 'git config --global --unset https.proxy'
+                     
                      sh ("git remote set-url origin https://github.com/ajeeshgit/directory-react-nodejs.git ")
                                 
-                                sshagent (['bd315d6e-0b35-4f2e-8b30-40ca5aee5be9']){ 
+                                sshagent (['87292f7c-ff10-44b4-9feb-83c73068d958']){ 
                                     sh ("git tag  -a -f -m 'tag is ${env.BUILD_NUMBER} ' '${env.BUILD_NUMBER}' ")
-                                    //sh("git push origin '${env.BUILD_NUMBER}'") 
+                                    sh("git push origin '${env.BUILD_NUMBER}'") 
                                            }
                      
-                     sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ajeeshgit/directory-react-nodejs.git --tags')
+                    // sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ajeeshgit/directory-react-nodejs.git --tags')
                      sh 'git --version'
                      sh 'git tag -l'           
                   
