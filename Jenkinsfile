@@ -23,7 +23,7 @@ node ('dockerbuilder'){
 
             docker.withRegistry('', 'ajeeshdocker')
                 {
-   
+                    git url: 'https://github.com:ajeeshgit/directory-react-nodejs/', Branch: 'Master', credentialsId: '87292f7c-ff10-44b4-9feb-83c73068d958'
                     git url: 'ssh://git@github.com:ajeeshgit/directory-react-nodejs.git', Branch: 'Master', credentialsId: '87292f7c-ff10-44b4-9feb-83c73068d958'
                     sh "git config user.name \"peekbot\""
                     sh ("git tag  -a -f -m 'tag is ${env.BUILD_NUMBER} ' '${env.BUILD_NUMBER}' ")
