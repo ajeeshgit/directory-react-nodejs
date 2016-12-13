@@ -89,7 +89,7 @@ catch (e)
                   
                   sshagent (['87292f7c-ff10-44b4-9feb-83c73068d958']){ 
                                     sh ("git tag  -a -f -m 'tag is ${env.BUILD_NUMBER} ' '${env.BUILD_NUMBER}' ")
-                                     sh ("git commit -m  test ")
+                                
                                     sh("git push origin '${env.BUILD_NUMBER}'") 
                                             }
                   sh 'git tag -l'
