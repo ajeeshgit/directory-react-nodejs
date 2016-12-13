@@ -24,7 +24,7 @@ node ('dockerbuilder'){
             docker.withRegistry('', 'ajeeshdocker')
                 {
    
-                    git url: "https://github.com/ajeeshgit/directory-react-nodejs/", Branch: 'Master', credentialsId: '87292f7c-ff10-44b4-9feb-83c73068d958'
+                    git url: "https://github.com/ajeeshgit/directory-react-nodejs/", Branch: 'Master', credentialsId: 'ajeeshgit'
                     sh 'git tag -a tagName -m "Your tag comment"'
                     sh "git push origin master"
                     
