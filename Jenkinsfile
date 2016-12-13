@@ -97,9 +97,9 @@ catch (e)
                  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'ajeeshgit', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) 
                             {
                      
-                                    sh("${git} config credential.username ${env.GIT_USERNAME}")
-                                    sh("${git} config credential.helper '!echo password=\$GIT_PASSWORD; echo'")
-                                    sh("GIT_ASKPASS=true ${git} push origin --tags")
+                              //      sh("${git} config credential.username ${env.GIT_USERNAME}")
+                              //      sh("${git} config credential.helper '!echo password=\$GIT_PASSWORD; echo'")
+                              //      sh("GIT_ASKPASS=true ${git} push origin --tags")
                      sh ("git remote set-url origin https://github.com/ajeeshgit/directory-react-nodejs.git ")
            
                     sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ajeeshgit/directory-react-nodejs.git --tags')
