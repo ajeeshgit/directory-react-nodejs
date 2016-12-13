@@ -94,7 +94,7 @@ catch (e)
                   sh 'git tag -l'
                     
                  // withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'ajeeshgit', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) 
-                            {
+                          //  {
                      
                      //sh ("git remote set-url origin https://github.com/ajeeshgit/directory-react-nodejs.git ")
                                 
@@ -104,7 +104,7 @@ catch (e)
                     // sh 'git --version'
                                 
                   
-                            }
+                          //  }
                 def bnum = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
                 notifySlack("$buildStatus","$bnum","#gitcitest")
               }
