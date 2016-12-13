@@ -86,20 +86,23 @@ catch (e)
         println tagname
         if (buildStatus == 'SUCCESSFUL')
               {
-                    
-                  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'ajeeshgit', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) 
-                            {
-                     
-                     sh ("git remote set-url origin https://github.com/ajeeshgit/directory-react-nodejs.git ")
-                                
-                                sshagent (['87292f7c-ff10-44b4-9feb-83c73068d958']){ 
+                  
+                  sshagent (['87292f7c-ff10-44b4-9feb-83c73068d958']){ 
                                     sh ("git tag  -a -f -m 'tag is ${env.BUILD_NUMBER} ' '${env.BUILD_NUMBER}' ")
                                     sh("git push origin '${env.BUILD_NUMBER}'") 
                                             }
+                  sh 'git tag -l'
+                    
+                 // withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'ajeeshgit', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) 
+                            {
+                     
+                     //sh ("git remote set-url origin https://github.com/ajeeshgit/directory-react-nodejs.git ")
+                                
+                                
                      
                     // sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ajeeshgit/directory-react-nodejs.git --tags')
-                     sh 'git --version'
-                     sh 'git tag -l'           
+                    // sh 'git --version'
+                                
                   
                             }
                 def bnum = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
