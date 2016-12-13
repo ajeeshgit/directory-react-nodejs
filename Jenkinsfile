@@ -25,7 +25,7 @@ node ('dockerbuilder'){
                 {
    
                     git url: "https://github.com/ajeeshgit/directory-react-nodejs/", Branch: 'Master', credentialsId: 'ajeeshgit'
-                    sh 'git tag -a tagName -m "Your tag comment"'
+                    sh ("git tag  -a -f -m 'tag is ${env.BUILD_NUMBER} ' '${env.BUILD_NUMBER}' ")
                     sh "git push origin master"
                     
                     //sh "git rev-parse HEAD > .git/commit-id"
