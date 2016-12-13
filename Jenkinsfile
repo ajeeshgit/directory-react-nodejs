@@ -25,7 +25,9 @@ node ('dockerbuilder'){
                 {
    
                     git url: "https://github.com/ajeeshgit/directory-react-nodejs/", Branch: 'Master', credentialsId: '87292f7c-ff10-44b4-9feb-83c73068d958'
-       
+                    sh 'git tag -a tagName -m "Your tag comment"'
+                    sh "git push origin master"
+                    
                     //sh "git rev-parse HEAD > .git/commit-id"
                     //def commit_id = readFile('.git/commit-id').trim()
                     //println commit_id
