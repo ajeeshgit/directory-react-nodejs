@@ -42,7 +42,9 @@ node ('dockerbuilder'){
                 {
                 
                     git url: 'https://github.com/ajeeshgit/directory-react-nodejs.git', Branch: 'Master', credentialsId: 'ajeeshgit'
-                    
+                    git remote set-url origin https://github.com/ajeeshgit/directory-react-nodejs.git
+                   // git remote add origin https://github.com/ajeeshgit/directory-react-nodejs.git
+                    git pull  
                     //git url: 'ssh://git@github.com:ajeeshgit/directory-react-nodejs.git',credentialsId: '8dbfb6d2-2549-4c6e-9a6e-994ae8797efc'
                     //sh "git rev-parse HEAD > .git/commit-id"
                     //def commit_id = readFile('.git/commit-id').trim()
@@ -54,15 +56,10 @@ node ('dockerbuilder'){
           stage "Build Docker"
        
                            def app = docker.build "ajeeshdocker/emp-nginx-app"
-                           stage "publish"
-                           app.push 'latest'
-                           app.push "5.6.0.$BUILD_NUMBER-master"
-                           
+         stage "publish"
+                           app.push 'Test'
+                           app.push "Test-5.6.0.$BUILD_NUMBER-master"
         
-       
-     
-              
-     
                 }
     
  
