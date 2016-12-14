@@ -25,7 +25,7 @@ node ('dockerbuilder'){
                               sh "sleep 20s"
                                }
                    EOM'''
-                }
+                },
     
     "stream 2" : 
                     
