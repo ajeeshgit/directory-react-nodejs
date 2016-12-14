@@ -50,7 +50,7 @@ node ('dockerbuilder'){
  
 
              stage "Testing"
-                sh 'exit 1'
+                
                 echo "Stage Build starts"
                 sh "echo ${env.BUILD_NUMBER}"
                // b=build( "Test_job_as_pipeline_downstream_project", DOCKER_QUEEN_TAG: "5.6.0.$BUILD_NUMBER-master" )
@@ -69,7 +69,7 @@ node ('dockerbuilder'){
 
 catch (e)
         {
-           text = "Fail"
+           
              def subject = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
              currentBuild.result = "FAILED"
              buildStatus = currentBuild.result
