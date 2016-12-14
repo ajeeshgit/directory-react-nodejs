@@ -1,10 +1,10 @@
 
-
+ stage "ENV1 build "
  parallel (
     "stream 1" : { 
                      node { 
                       
-                      stage "ENV1 build "
+                     
                                                       
                            sh "sleep 20s" 
                            sh "echo ENV1"
@@ -12,7 +12,7 @@
                    },
     "stream 2" : { 
                      node { 
-                         stage "ENV2 build "
+                        
                            sh "echo ENV2"
                                                                                   
                        } 
