@@ -13,7 +13,8 @@ node ('dockerbuilder'){
                 parallel (
   
  
-   "Parellel step 1" : {    sh '''mkdir -p apps/api/priv/static/
+   "Parellel step 1" : 
+                    node {    sh '''mkdir -p apps/api/priv/static/
                  cat > apps/api/priv/static/version.json <<- EOM
                             {
                             "metadata" : {
@@ -26,14 +27,14 @@ node ('dockerbuilder'){
                    EOM'''
                 }
     
-    "Parellel step 2" :
+    "Parellel step 2" : 
                     
-                    { 
+                   node { 
                        
          sh "sleep 20s"
                     }   
         
-                    
+                   ) 
                     }
         
             docker.withRegistry('', 'ajeeshdocker')
