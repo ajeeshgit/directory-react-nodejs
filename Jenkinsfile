@@ -70,7 +70,7 @@ node ('dockerbuilder'){
                            { 
                              echo "Entering Deploy"
                            
-                              sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 54.234.134.203 uname -a' 
+                              sh 'ssh -o StrictHostKeyChecking=no -l ubuntu@54.234.134.203 uname -a' 
                            }      
 
      
