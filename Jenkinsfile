@@ -68,6 +68,8 @@ node ('dockerbuilder'){
                 
                        sshagent (['04059474-98d3-4ece-bcd7-ddab1d9396b1'])
                            { 
+                             echo "Entering Deploy"
+                           
                               sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 54.234.134.203 uname -a' 
                            }      
 
