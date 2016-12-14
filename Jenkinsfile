@@ -51,28 +51,31 @@ node ('dockerbuilder'){
                     def bnum = "'${env.BUILD_NUMBER}'"
                     notifySlack("$subject","$bnum","#gitcitest")
         
-   
-        
-       stage "build"
+          stage "Build Docker"
        
                            def app = docker.build "ajeeshdocker/emp-nginx-app"
                            stage "publish"
                            app.push 'latest'
                            app.push "5.6.0.$BUILD_NUMBER-master"
                            
-      stage "Deploy"
-                  
-                       sshagent (['04059474-98d3-4ece-bcd7-ddab1d9396b1'])
-                           { 
-                              sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 54.234.134.203 uname -a' 
-                           }      
-
+        
+       
+     
               
      
                 }
     
  
 
+      stage "Deploy"
+                
+                       sshagent (['04059474-98d3-4ece-bcd7-ddab1d9396b1'])
+                           { 
+                              sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 54.234.134.203 uname -a' 
+                           }      
+
+     
+     
              stage "Testing"
                 
                 echo "Stage Build starts"
