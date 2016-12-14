@@ -1,24 +1,6 @@
 
  stage "ENV1 build "
- parallel (
-    "stream 1" : { 
-                     node { 
-                      
-                     
-                                                      
-                           sh "sleep 20s" 
-                           sh "echo ENV1"
-                       } 
-                   },
-    "stream 2" : { 
-                     node { 
-                        
-                           sh "echo ENV2"
-                                                                                  
-                       } 
-                   }
-          )
-
+  
 node {
   
    parallel (
