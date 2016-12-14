@@ -55,10 +55,10 @@ node ('dockerbuilder'){
         
           stage "Build Docker"
        
-                           def app = docker.build "ajeeshdocker/emp-nginx-app"
+                          // def app = docker.build "ajeeshdocker/emp-nginx-app"
          stage "publish"
-                           app.push 'Test'
-                           app.push "Test-5.6.0.$BUILD_NUMBER-master"
+                          // app.push 'Test'
+                         //  app.push "Test-5.6.0.$BUILD_NUMBER-master"
         
                 }
     
