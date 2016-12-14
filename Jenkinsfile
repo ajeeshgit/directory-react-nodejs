@@ -47,18 +47,25 @@ node ('dockerbuilder'){
                     //sh "git rev-parse HEAD > .git/commit-id"
                     //def commit_id = readFile('.git/commit-id').trim()
                     //println commit_id
-                    def subject = "Job name is '${env.BUILD_URL}' build# is '${env.BUILD_NUMBER}' user is  '${env.GIT_AUTHOR_NAME}' Dispalyname is '${env.CHANGE_AUTHOR_DISPLAY_NAME}'"
+                    def subject = "Job name is '${env.BUILD_URL}' build# is '${env.BUILD_NUMBER}'"
                     def bnum = "'${env.BUILD_NUMBER}'"
                     notifySlack("$subject","$bnum","#gitcitest")
         
    
         
-                     //       stage "build"
-                      //     def app = docker.build "ajeeshdocker/emp-nginx-app"
-
-                      //      stage "publish"
-                      //      app.push 'latest'
-                      //      app.push "5.6.0.$BUILD_NUMBER-master"
+       stage "build"
+       
+                           def app = docker.build "ajeeshdocker/emp-nginx-app"
+                           stage "publish"
+                           app.push 'latest'
+                           app.push "5.6.0.$BUILD_NUMBER-master"
+                           
+      Stage "Deploy"
+                  
+                       sshagent (['04059474-98d3-4ece-bcd7-ddab1d9396b1'])
+                           { 
+                              sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 54.234.134.203 uname -a' 
+                           }      
 
               
      
