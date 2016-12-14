@@ -66,7 +66,7 @@ node ('dockerbuilder'){
 
       stage "Deploy"
                 
-                       sshagent (['04059474-98d3-4ece-bcd7-ddab1d9396b1'])
+                       sshagent (credentials:['04059474-98d3-4ece-bcd7-ddab1d9396b1'])
                            { 
                              echo "Entering Deploy"
                            
