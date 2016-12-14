@@ -9,8 +9,11 @@ node ('dockerbuilder'){
     try 
     {
         stage "Create build "
+        
+                parallel (
+  
  
-                sh '''mkdir -p apps/api/priv/static/
+   "Parellel step 1" : {    sh '''mkdir -p apps/api/priv/static/
                  cat > apps/api/priv/static/version.json <<- EOM
                             {
                             "metadata" : {
@@ -18,9 +21,21 @@ node ('dockerbuilder'){
                              "commit" : "$GIT_COMMIT"
                                           },
                               "version" : "5.6.0+$BUILD_NUMBER"
+                              sh "sleep 20s"
                                }
                    EOM'''
-
+                }
+    
+    "Parellel step 2" :
+                    
+                    { 
+                       
+         sh "sleep 20s"
+                    }   
+        
+                    
+                    }
+        
             docker.withRegistry('', 'ajeeshdocker')
                 {
                 
