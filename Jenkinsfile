@@ -13,7 +13,7 @@ node ('dockerbuilder'){
                 parallel (
   
  
-   "Parellel step 1" : 
+   "stream 1" : 
                     node {    sh '''mkdir -p apps/api/priv/static/
                  cat > apps/api/priv/static/version.json <<- EOM
                             {
@@ -27,7 +27,7 @@ node ('dockerbuilder'){
                    EOM'''
                 }
     
-    "Parellel step 2" : 
+    "stream 2" : 
                     
                    node { 
                        
