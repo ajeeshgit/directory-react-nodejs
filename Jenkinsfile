@@ -10,11 +10,7 @@ node ('dockerbuilder'){
     {
         stage "Create build "
         
-                parallel (
-  
- 
-   "stream 1" : 
-                    node {    sh '''mkdir -p apps/api/priv/static/
+                 sh '''mkdir -p apps/api/priv/static/
                  cat > apps/api/priv/static/version.json <<- EOM
                             {
                             "metadata" : {
@@ -25,16 +21,25 @@ node ('dockerbuilder'){
                               sh "sleep 20s"
                                }
                    EOM'''
-                },
     
-    "stream 2" : 
-                    
-                   node { 
-                       
-         sh "sleep 20s"
-                    }   
         
-                   ) 
+        
+        parallel (
+    "stream 1" : { 
+                     node { 
+                                                      
+                           sh "sleep 20s" 
+                           sh "echo hstream1"
+                       } 
+                   },
+    "stream 2" : { 
+                     node { 
+                         
+                           sh "echo hello2"
+                           sh "hashtag fail"                                                       
+                       } 
+                   }
+          )
                     }
         
             docker.withRegistry('', 'ajeeshdocker')
