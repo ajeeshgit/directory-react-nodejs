@@ -47,7 +47,7 @@ node ('dockerbuilder'){
                     //sh "git rev-parse HEAD > .git/commit-id"
                     //def commit_id = readFile('.git/commit-id').trim()
                     //println commit_id
-                    def subject = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}' user is  '${env.GIT_AUTHOR_NAME}' Dispalyname is '${env.CHANGE_AUTHOR_DISPLAY_NAME}'"
+                    def subject = "Job name is '${env.BUILD_URL}' build# is '${env.BUILD_NUMBER}' user is  '${env.GIT_AUTHOR_NAME}' Dispalyname is '${env.CHANGE_AUTHOR_DISPLAY_NAME}'"
                     def bnum = "'${env.BUILD_NUMBER}'"
                     notifySlack("$subject","$bnum","#gitcitest")
         
@@ -87,7 +87,7 @@ node ('dockerbuilder'){
 catch (e)
         {
            
-             def subject = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
+             def subject = "Job name is '${env.BUILD_URL}' build# is '${env.BUILD_NUMBER}'"
              currentBuild.result = "FAILED"
              buildStatus = currentBuild.result
              notifySlack("$buildStatus","$subject","#gitcitest")
@@ -125,7 +125,7 @@ catch (e)
                     sh 'git tag -l '  
                     
                             }
-                def bnum = "Job name is '${env.JOB_NAME}' build# is '${env.BUILD_NUMBER}'"
+                def bnum = "Finally Job name is '${env.BUILD_URL}' build# is '${env.BUILD_NUMBER}'"
                 notifySlack("$buildStatus","$bnum","#gitcitest")
               }
              
