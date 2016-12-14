@@ -60,7 +60,7 @@ node ('dockerbuilder'){
                            app.push 'latest'
                            app.push "5.6.0.$BUILD_NUMBER-master"
                            
-      Stage "Deploy"
+      stage "Deploy"
                   
                        sshagent (['04059474-98d3-4ece-bcd7-ddab1d9396b1'])
                            { 
