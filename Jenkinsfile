@@ -1,14 +1,13 @@
-
- stage "ENV1 build "
+// stage "ENV1 build "
   
-node {
+//node {
   
-   parallel (
-     phase1: { sh "echo p1; sleep 0s; echo phase1" },
-     phase2: { sh "echo p2; sleep 1s; echo phase2" }
-   )
+//   parallel (
+//     phase1: { sh "echo p1; sleep 0s; echo phase1" },
+//     phase2: { sh "echo p2; sleep 1s; echo phase2" }
+ //  )
      
-}
+//}
                   
 
 
@@ -54,19 +53,16 @@ node ('dockerbuilder'){
                     notifySlack("$subject","$bnum","#gitcitest")
         
           stage "Build Docker"
-       
+                     
                           // def app = docker.build "ajeeshdocker/emp-nginx-app"
-           stage "publish"
-                          // app.push 'Test'
-                         //  app.push "Test-5.6.0.$BUILD_NUMBER-master"
-        
+           
                 }
     
 
          
 
       stage "Deploy"
-                       def userInput = input(id: 'userInput', message: 'Let\'s promote?', parameters: [[$class: 'TextParameterDefinition', defaultValue: 'uat', description: 'Environment', name: 'env']]) 
+                       def userInput = input(id: 'userInput', message: 'Let\'s promote?', parameters: [[$class: 'TextParameterDefinition', defaultValue: 'Stage', description: 'Environment', name: 'ENV']]) 
                        echo ("Env: "+userInput) 
                        sshagent (credentials:['04059474-98d3-4ece-bcd7-ddab1d9396b1'])
                            { 
