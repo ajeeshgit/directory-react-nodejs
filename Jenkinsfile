@@ -70,7 +70,7 @@ node ('dockerbuilder'){
                            { 
                              echo "Entering Deploy"
                            
-                              sh 'ssh -vvv -o StrictHostKeyChecking=no -l  ubuntu kubeprod.peek.com uname -a' 
+                              sh 'ssh -vvv -o StrictHostKeyChecking=no -l  ec2-user kubeprod2.peek.com uname -a' 
                            }      
 
      
