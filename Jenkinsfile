@@ -62,11 +62,12 @@ node ('dockerbuilder'){
         
                 }
     
- input: Ready to deploy ?
+
          
 
       stage "Deploy"
-                
+                       def userInput = input(id: 'userInput', message: 'Let\'s promote?', parameters: [[$class: 'TextParameterDefinition', defaultValue: 'uat', description: 'Environment', name: 'env']]) 
+                       echo ("Env: "+userInput) 
                        sshagent (credentials:['04059474-98d3-4ece-bcd7-ddab1d9396b1'])
                            { 
                              echo "Entering Deploy"
