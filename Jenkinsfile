@@ -62,7 +62,8 @@ node ('dockerbuilder'){
         
                 }
     
- 
+ input: Ready to deploy ?
+         
 
       stage "Deploy"
                 
