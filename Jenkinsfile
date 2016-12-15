@@ -66,7 +66,7 @@ node ('dockerbuilder'){
 
       stage "Deploy"
                 
-                       sshagent (credentials:['ec2-user'])
+                       sshagent (credentials:['ec2-user (from dockerbuilder host)'])
                            { 
                              echo "Entering Deploy"
                              sh  "ssh -vvv -o StrictHostKeyChecking=no   -l  ec2-user kubeprod2.peek.com uname -a"
